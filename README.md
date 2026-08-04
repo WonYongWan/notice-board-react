@@ -48,16 +48,74 @@ https://notice-board-react.vercel.app/
 
 ## Project Structure
 
-
-src
-├── api
-├── assets
-├── components
-├── mocks
-├── pages
-├── router
-├── services
-└── App.jsx
+📦src
+ ┣ 📂api
+ ┃ ┗ 📜noticeApi.js
+ ┣ 📂assets
+ ┃ ┣ 📂fonts
+ ┃ ┃ ┣ 📜Pretendard-Bold.woff
+ ┃ ┃ ┣ 📜Pretendard-ExtraBold.woff
+ ┃ ┃ ┣ 📜Pretendard-Light.woff
+ ┃ ┃ ┣ 📜Pretendard-Medium.woff
+ ┃ ┃ ┣ 📜Pretendard-Regular.woff
+ ┃ ┃ ┗ 📜Pretendard-SemiBold.woff
+ ┃ ┣ 📂icons
+ ┃ ┃ ┣ 📜ic-arrow-bottom.png
+ ┃ ┃ ┣ 📜ic-delete-search.png
+ ┃ ┃ ┗ 📜ic-search.png
+ ┃ ┣ 📂logos
+ ┃ ┃ ┗ 📜logo.png
+ ┃ ┗ 📂styles
+ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┃ ┣ 📜_fonts.scss
+ ┃ ┃ ┃ ┣ 📜_mixins.scss
+ ┃ ┃ ┃ ┗ 📜_reset.scss
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📜_dropdown.scss
+ ┃ ┃ ┃ ┣ 📜_icons.scss
+ ┃ ┃ ┃ ┗ 📜_input.scss
+ ┃ ┃ ┣ 📜global.scss
+ ┃ ┃ ┗ 📜_common.scss
+ ┣ 📂components
+ ┃ ┣ 📂footer
+ ┃ ┃ ┣ 📜Footer.jsx
+ ┃ ┃ ┗ 📜Footer.scss
+ ┃ ┣ 📂header
+ ┃ ┃ ┣ 📜Header.jsx
+ ┃ ┃ ┗ 📜Header.scss
+ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📜Layout.jsx
+ ┃ ┃ ┗ 📜Layout.scss
+ ┃ ┣ 📂modal
+ ┃ ┃ ┣ 📜Modal.jsx
+ ┃ ┃ ┗ 📜Modal.scss
+ ┃ ┣ 📂notice
+ ┃ ┃ ┣ 📜NoticeEmpty.jsx
+ ┃ ┃ ┣ 📜NoticeEmpty.scss
+ ┃ ┃ ┣ 📜NoticeFilter.jsx
+ ┃ ┃ ┣ 📜NoticeSearch.jsx
+ ┃ ┃ ┣ 📜NoticeSearch.scss
+ ┃ ┃ ┗ 📜NoticeSort.jsx
+ ┃ ┗ 📂pagination
+ ┃ ┃ ┣ 📜Pagination.jsx
+ ┃ ┃ ┗ 📜Pagination.scss
+ ┣ 📂mocks
+ ┃ ┗ 📜notices.js
+ ┣ 📂pages
+ ┃ ┣ 📜NoticeDetail.jsx
+ ┃ ┣ 📜NoticeDetail.scss
+ ┃ ┣ 📜NoticeEdit.jsx
+ ┃ ┣ 📜NoticeEdit.scss
+ ┃ ┣ 📜NoticeList.jsx
+ ┃ ┣ 📜NoticeList.scss
+ ┃ ┣ 📜NoticeWrite.jsx
+ ┃ ┗ 📜NoticeWrite.scss
+ ┣ 📂router
+ ┃ ┗ 📜Router.jsx
+ ┣ 📂services
+ ┃ ┗ 📜noticeService.js
+ ┣ 📜App.jsx
+ ┗ 📜main.jsx
 
 ---
 
