@@ -50,18 +50,14 @@ https://notice-board-react.vercel.app/
 
 
 src
+├── api
+├── assets
 ├── components
-│ ├── modal
-│ └── notice
+├── mocks
 ├── pages
-│ ├── NoticeList
-│ ├── NoticeDetail
-│ ├── NoticeWrite
-│ └── NoticeEdit
 ├── router
 ├── services
 └── App.jsx
-
 
 ---
 
