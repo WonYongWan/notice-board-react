@@ -47,7 +47,7 @@ https://notice-board-react.vercel.app/
 ---
 
 ## Project Structure
-
+```
 📦src
  ┣ 📂api
  ┃ ┗ 📜noticeApi.js
@@ -116,7 +116,7 @@ https://notice-board-react.vercel.app/
  ┃ ┗ 📜noticeService.js
  ┣ 📜App.jsx
  ┗ 📜main.jsx
-
+```
 ---
 
 ## Learned
