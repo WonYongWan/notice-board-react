@@ -1,16 +1,83 @@
-# React + Vite
+# Notice Board React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React를 활용하여 제작한 공지사항 게시판 프로젝트입니다.
 
-Currently, two official plugins are available:
+CRUD 기능을 중심으로 게시글 작성, 수정, 삭제, 검색, 필터, 정렬 기능을 구현했으며,
+React 상태 관리와 컴포넌트 설계를 학습하기 위해 제작했습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Demo
 
-## React Compiler
+https://notice-board-react.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript
+- SCSS
+- React Router
+- LocalStorage
+- Vercel
+
+---
+
+## Features
+
+### 게시글 CRUD
+- 게시글 작성 / 조회 / 수정 / 삭제
+- 작성 날짜 자동 생성
+- 삭제 확인 Modal 구현
+
+### 검색 및 필터
+- 제목 검색 기능
+- 카테고리별 필터링
+- 조회순 / 최신순 / 오래된순 정렬
+
+### 데이터 관리
+- LocalStorage를 활용한 데이터 저장
+- 새로고침 이후에도 데이터 유지
+
+### UI Component
+- 재사용 가능한 Modal 컴포넌트 구현
+- Dropdown 컴포넌트 구현
+- 외부 클릭 시 Dropdown 닫힘 처리
+
+---
+
+## Project Structure
+
+
+src
+├── components
+│ ├── modal
+│ └── notice
+├── pages
+│ ├── NoticeList
+│ ├── NoticeDetail
+│ ├── NoticeWrite
+│ └── NoticeEdit
+├── router
+├── services
+└── App.jsx
+
+
+---
+
+## Learned
+
+- React 상태 관리와 Props 데이터 흐름 이해
+- useState, useMemo, useEffect, useRef 활용
+- CRUD 데이터 처리 방식 학습
+- React Router를 활용한 SPA 구현
+- Vercel 배포 경험
+
+---
+
+## Future Improvements
+
+- Backend API 연동
+- Database 연결
+- TypeScript 적용
+- 로그인 기능 추가
