@@ -1,0 +1,127 @@
+@use '../base/mixins' as *;
+@use '../base/fonts';
+
+.dropdown {
+  position: relative;
+  width: 144px;
+
+  &__btn {
+    @include flex-pos($ai: center, $jc: space-between);
+    width: 100%;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    padding: 10px 12px 10px 20px;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+
+      &--arrow-bottom {
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &__label {
+    @include flex-pos();
+    @include preMedium();
+    font-size: 16px;
+    line-height: 19px;
+    color: #686868;
+
+    .icon {
+      margin-right: 6px;
+    }
+
+    &.is-active {
+      color: #222;
+    }
+  }
+
+  &__input {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .select-box {
+    display: none;
+    top: calc(100% + 10px);
+    left: 0;
+  }
+
+  &.is-active {
+    .dropdown__btn {
+      .icon {
+        &--arrow-bottom,
+        &--triangle-bottom {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    .select-box {
+      display: block;
+    }
+  }
+}
+
+.select-box {
+  display: none;
+  position: absolute;
+  width: 100%;
+  max-width: 205px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  overflow: hidden;
+  padding: 10px 0;
+  box-shadow: 0 2px 12px 0 #0000001f;
+  z-index: 9;
+
+  &.is-active {
+    display: block;
+  }
+
+  &__btn {
+    @include flex-pos($ai: center, $g: 16px);
+    @include preMedium();
+    font-size: 16px;
+    line-height: 19px;
+    color: #222;
+    width: 100%;
+    padding: 15px 18px 14px;
+    text-align: left;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+
+      &--check {
+        margin-left: auto;
+        display: none;
+      }
+    }
+
+    &.is-active {
+      background-color: #f8f8f8;
+
+      .icon {
+        &--check {
+          display: inline-block;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: #f8f8f8;
+    }
+  }
+}

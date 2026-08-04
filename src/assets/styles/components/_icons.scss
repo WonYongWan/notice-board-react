@@ -1,0 +1,26 @@
+@use '../base/mixins' as *;
+
+:root {
+  --ic-arrow-bottom: url(../../icons/ic-arrow-bottom.png);
+  --ic-delete-search: url(../../icons/ic-delete-search.png);
+  --ic-search: url(../../icons/ic-search.png);
+}
+
+.icon {
+  @include image-set();
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  &--arrow-bottom {
+    background-image: var(--ic-arrow-bottom);
+  }
+
+  &--delete-search {
+    background-image: var(--ic-delete-search);
+  }
+
+  &--search {
+    background-image: var(--ic-search);
+  }
+}

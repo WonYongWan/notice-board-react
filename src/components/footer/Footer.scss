@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: center;
+
+  background: #141414;
+  padding: 70px 50px;
+
+  &__desc {
+    @include preBold();
+    color: #fff;
+    font-size: 18px;
+  }
+}

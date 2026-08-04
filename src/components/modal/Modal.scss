@@ -1,0 +1,81 @@
+.modal-root {
+  position: fixed;
+  width: 100%;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 1;
+  pointer-events: auto;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.modal {
+  pointer-events: auto;
+  opacity: 1;
+  background-color: #fff;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 16px;
+  padding: 40px 24px 24px;
+
+  &--center {
+    @include pos-center();
+  }
+
+  &__content {
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    @include preMedium();
+    font-size: 18px;
+    line-height: 21px;
+    color: #222;
+    text-align: center;
+  }
+
+  &__footer {
+    @include flex-pos($ai: center, $g: 12px);
+  }
+
+  &__btn {
+    @include preMedium();
+    @include flex-pos($jc: center, $ai: center);
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    color: #222;
+    background-color: #eee;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &:disabled {
+      color: #bbb;
+      background-color: #eee;
+      pointer-events: none;
+    }
+
+    &--accent {
+      color: #fff;
+      background-color: #fa3d22;
+
+      &:hover {
+        background-color: #df3d24;
+      }
+    }
+  }
+}

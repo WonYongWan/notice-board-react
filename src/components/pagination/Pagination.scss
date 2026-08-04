@@ -1,0 +1,63 @@
+.pagination {
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  &__btn {
+    @include preMedium();
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    color: #333;
+    font-size: 12px;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: #333 0px 1px 3px 0px;
+    }
+
+    &--prev,
+    &--next {
+      &:disabled {
+        color: #aaa;
+        cursor: not-allowed;
+        opacity: 0.6;
+
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  &__nums {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__num {
+    @include preMedium();
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    color: #333;
+    transition: 0.3s box-shadow;
+
+    &:hover {
+      box-shadow: #333 0px 1px 3px 0px;
+    }
+
+    &--active {
+      background: #fa3d22;
+      color: #fff;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.notice-empty {
+  &__title {
+    @include preBold();
+    font-size: 18px;
+    color: #333;
+  }
+}

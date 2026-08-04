@@ -1,0 +1,13 @@
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+
+  &__logo {
+    @include image_set();
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/logos/logo.png);
+  }
+}
