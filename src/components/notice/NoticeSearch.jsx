@@ -18,6 +18,7 @@ const NoticeSearch = ({ searchInput, setSearchInput, setSearchValue, setCurrentP
 
   const deleteBtnClickEvent = () => {
     setSearchInput('');
+    setSearchValue('');
   };
 
   return (
