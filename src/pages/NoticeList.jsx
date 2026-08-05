@@ -13,6 +13,10 @@ const NoticeList = ({ data, categoryList, category, setCategory, sortType, setSo
   const end = start + 10;
   const currentNoticeList = data.slice(start, end);
 
+  const handleWriteClick = () => {
+    setCategory(categoryList[0]);
+  };
+
   return (
     <>
       <div className="notice-list__header">
@@ -47,7 +51,7 @@ const NoticeList = ({ data, categoryList, category, setCategory, sortType, setSo
       </ul>
       <div className="notice-list__footer">
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pageLength={pageLength} />
-        <Link className="notice-list__btn notice-list__btn--write" to={'/write'}>
+        <Link className="notice-list__btn notice-list__btn--write" to={'/write'} onClick={handleWriteClick}>
           Write
         </Link>
       </div>
