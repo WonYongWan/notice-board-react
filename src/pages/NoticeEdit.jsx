@@ -13,9 +13,13 @@ const NoticeEdit = ({ editNotice, data }) => {
 
   if (!notice) return null;
 
-  const handleEdit = () => {
-    editNotice(Number(id), noticeTitle, noticeContent);
-    navigate(`/notices/${id}`);
+  const handleEdit = async () => {
+    try {
+      await editNotice(Number(id), { ...notice, title: noticeTitle, content: noticeContent });
+      navigate(`/notices/${id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const inputTitle = (e) => {

@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header">
       <h1 className="header__title">
         <Link to={'/'}>
-          <span className="header__logo" aria-hidden="true"></span>
+          <span>FREE NOTICE</span>
         </Link>
       </h1>
     </header>

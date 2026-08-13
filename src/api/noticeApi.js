@@ -1,13 +1,72 @@
-import notices from '../mocks/notices';
+import { supabase } from '../services/supabase';
 
-export const STORAGE_KEY = 'notices';
+export const getNoticeList = async () => {
+  const { data, error } = await supabase.from('posts').select('*');
 
-export const getNoticeList = () => {
-  const data = localStorage.getItem(STORAGE_KEY);
+  if (error) {
+    console.error('게시글 조회 실패', error);
+    return [];
+  }
 
-  if (data) return JSON.parse(data);
+  return data;
+};
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(notices));
+export const createNoticeApi = async (notice) => {
+  const { data, error } = await supabase
+    .from('posts')
+    .insert({
+      category: notice.category,
+      title: notice.title,
+      content: notice.content,
+      views: 0,
+    })
+    .select()
+    .single();
 
-  return notices;
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
+
+export const updateNoticeApi = async (id, notice) => {
+  const { data, error } = await supabase
+    .from('posts')
+    .update({
+      category: notice.category,
+      title: notice.title,
+      content: notice.content,
+    })
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
+
+export const deleteNoticeApi = async (id) => {
+  const { data, error } = await supabase.from('posts').delete().eq('id', id);
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
+
+export const increaseViewApi = async (id) => {
+  const { data, error } = await supabase.rpc('increase_post_views', {
+    post_id: id,
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
 };

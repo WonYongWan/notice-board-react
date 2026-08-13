@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import Router from './router/Router';
 import { getNoticeList } from './services/noticeService';
-import { STORAGE_KEY } from './api/noticeApi';
+import { createNoticeApi, deleteNoticeApi, increaseViewApi, updateNoticeApi } from './api/noticeApi';
 
 function App() {
-  const [noticeList, setNoticeList] = useState(() => getNoticeList());
+  const [noticeList, setNoticeList] = useState([]);
+  const [isLoading, setIsLoding] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [category, setCategory] = useState('전체');
@@ -14,36 +15,59 @@ function App() {
     return ['전체', ...new Set(noticeList.map((item) => item.category))];
   }, [noticeList]);
 
-  const createNotice = (notice) => {
-    setNoticeList((prev) => [...prev, notice]);
+  const createNotice = async (notice) => {
+    try {
+      const newNotice = await createNoticeApi(notice);
+      setNoticeList((prev) => [...prev, newNotice]);
+      return newNotice;
+    } catch (error) {
+      console.error('게시글 생성 실패: ', error);
+    }
   };
 
-  const deleteNotice = (id) => {
-    setNoticeList((prev) => {
-      return prev.filter((item) => item.id !== id);
-    });
+  const deleteNotice = async (id) => {
+    try {
+      await deleteNoticeApi(id);
+      setNoticeList((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('게시글 삭제 실패: ', error);
+      throw error;
+    }
   };
 
-  const editNotice = (id, title, content) => {
-    setNoticeList((prev) => {
-      return prev.map((item) => {
-        return item.id === id
-          ? {
-              ...item,
-              title: title,
-              content: content,
-            }
-          : item;
-      });
-    });
+  const editNotice = async (id, notice) => {
+    try {
+      const updateNotice = await updateNoticeApi(id, notice);
+
+      setNoticeList((prev) =>
+        prev.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                title: updateNotice.title,
+                content: updateNotice.content,
+                updated_at: updateNotice.updated_at,
+              }
+            : item,
+        ),
+      );
+    } catch (error) {
+      console.error('게시글 업데이트 실패', error);
+    }
   };
 
-  const increaseViews = (id) => {
-    setNoticeList((prev) => prev.map((item) => (item.id === id ? { ...item, views: Number(item.views) + 1 } : item)));
+  const increaseViews = async (id) => {
+    try {
+      const newViews = await increaseViewApi(id);
+      setNoticeList((prev) => prev.map((item) => (item.id === id ? { ...item, views: newViews } : item)));
+    } catch (error) {
+      console.error('조회수 증가 실패', error);
+    }
   };
 
   const processedNoticeList = useMemo(() => {
     let result = [...noticeList];
+    console.log(result);
 
     if (searchValue.trim().length !== 0) {
       result = result.filter((item) => item.title.replace(/\s/g, '').toLowerCase().includes(searchValue.trim().replace(/\s/g, '').toLowerCase()));
@@ -56,9 +80,9 @@ function App() {
     if (sortType === '조회순') {
       result = result.sort((a, b) => b.views - a.views);
     } else if (sortType === '최신순') {
-      result = result.sort((a, b) => b.date.localeCompare(a.date));
+      result = result.sort((a, b) => b.updated_at.localeCompare(a.updated_at));
     } else if (sortType === '오래된순') {
-      result = result.sort((a, b) => a.date.localeCompare(b.date));
+      result = result.sort((a, b) => a.updated_at.localeCompare(b.updated_at));
     }
 
     return result;
@@ -70,6 +94,7 @@ function App() {
     editNotice,
     increaseViews,
     data: processedNoticeList,
+    isLoading,
     categoryList,
     category,
     setCategory,
@@ -83,8 +108,21 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(noticeList));
-  }, [noticeList]);
+    const fetchNoticeList = async () => {
+      try {
+        setIsLoding(true);
+
+        const data = await getNoticeList();
+        setNoticeList(data);
+      } catch (error) {
+        console.error('게시글 조회 실패', error);
+      } finally {
+        setIsLoding();
+      }
+    };
+
+    fetchNoticeList();
+  }, []);
 
   return (
     <>

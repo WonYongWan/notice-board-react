@@ -4,38 +4,36 @@ import Modal from '../components/modal/Modal';
 import { useState } from 'react';
 import NoticeFilter from '../components/notice/NoticeFilter';
 
-const NoticeWrite = ({ data, createNotice, categoryList }) => {
+const NoticeWrite = ({ createNotice, categoryList }) => {
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
   const [noticeTitle, setNoticeTitle] = useState('');
   const [noticeContent, setNoticeContent] = useState('');
-  const newId = data.length > 0 ? Math.max(...data.map((item) => item.id)) + 1 : 1;
   const navigate = useNavigate();
   const filteredCategoryList = categoryList.filter((item) => item !== '전체');
   const [category, setCategory] = useState(filteredCategoryList[0]);
 
-  const handleWrite = () => {
+  const handleWrite = async () => {
     if (noticeTitle.trim().length === 0 || noticeContent.trim().length === 0) {
       setIsWriteModalOpen(false);
       setIsReturnModalOpen(true);
       return;
     }
 
-    const today = new Date();
-    const date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-
     const newNotice = {
-      id: newId,
       category,
       title: noticeTitle,
       writer: '유저',
-      date,
       views: 0,
       content: noticeContent,
     };
 
-    createNotice(newNotice);
-    navigate(`/notices/${newId}`);
+    try {
+      const creactNotice = await createNotice(newNotice);
+      navigate(`/notices/${creactNotice.id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const inputTitle = (e) => {

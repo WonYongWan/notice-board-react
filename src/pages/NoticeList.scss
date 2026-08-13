@@ -2,7 +2,8 @@
   min-height: 690px;
 
   &__item {
-    &--empty {
+    &--empty,
+    &--loading {
       @include flex-pos($jc: center, $ai: center);
       min-height: inherit;
     }

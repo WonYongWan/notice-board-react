@@ -1,13 +1,16 @@
 .header {
   padding: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+  background-size: 200% 100%;
+  animation: gradient-move 3s ease-in-out infinite alternate;
+  height: 60px;
 
-  &__logo {
-    @include image_set();
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-image: url(../../assets/logos/logo.png);
+  &__title {
+    @include preBold();
+    font-size: 18px;
+    color: #fff;
   }
 }

@@ -3,7 +3,7 @@ import './NoticeDetail.scss';
 import Modal from '../components/modal/Modal';
 import { useState } from 'react';
 
-const NoticeDetail = ({ deleteNotice, data }) => {
+const NoticeDetail = ({ deleteNotice, data, setCurrentPage }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -12,9 +12,14 @@ const NoticeDetail = ({ deleteNotice, data }) => {
 
   if (!notice) return null;
 
-  const handleDelete = () => {
-    deleteNotice(Number(id));
-    navigate('/');
+  const handleDelete = async () => {
+    try {
+      await deleteNotice(Number(id));
+      setCurrentPage?.(0);
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

@@ -5,8 +5,9 @@ import NoticeSort from '../components/notice/NoticeSort';
 import NoticeFilter from '../components/notice/NoticeFilter';
 import NoticeSearch from '../components/notice/NoticeSearch';
 import NoticeEmpty from '../components/notice/NoticeEmpty';
+import Loading from '../components/loading/Loading';
 
-const NoticeList = ({ data, categoryList, category, setCategory, sortType, setSortType, currentPage, setCurrentPage, setSearchValue, searchInput, setSearchInput, increaseViews }) => {
+const NoticeList = ({ data, isLoading, categoryList, category, setCategory, sortType, setSortType, currentPage, setCurrentPage, setSearchValue, searchInput, setSearchInput, increaseViews }) => {
   const itemLength = data.length;
   const pageLength = Math.ceil(itemLength / 10);
   const start = currentPage * 10;
@@ -27,7 +28,11 @@ const NoticeList = ({ data, categoryList, category, setCategory, sortType, setSo
         </div>
       </div>
       <ul className="notice-list">
-        {currentNoticeList.length === 0 ? (
+        {isLoading ? (
+          <li className="notice-list__item notice-list__item--loading">
+            <Loading />
+          </li>
+        ) : currentNoticeList.length === 0 ? (
           <li className="notice-list__item notice-list__item--empty">
             <NoticeEmpty />
           </li>
@@ -41,7 +46,7 @@ const NoticeList = ({ data, categoryList, category, setCategory, sortType, setSo
                     <p>{noticeItem.title}</p>
                   </div>
                   <div className="notice-list__sub-info">
-                    {noticeItem.views} | {noticeItem.writer} | {noticeItem.date}
+                    {noticeItem.views} | {noticeItem.writer} | {noticeItem.updated_at.split('T')[0]}
                   </div>
                 </div>
               </Link>
