@@ -1,11 +1,11 @@
 .loading {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: 6px solid #fff;
-  border-right-color: #2cacd1;
-  border-top-color: #2cacd1;
-  border-bottom-color: #2cacd1;
+  border-right-color: #0090f9;
+  border-top-color: #0090f9;
+  border-bottom-color: #0090f9;
   border-radius: 100%;
   animation: loading-rotate 0.8s infinite linear;
 }

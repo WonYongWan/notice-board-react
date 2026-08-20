@@ -1,0 +1,238 @@
+.login,
+.signup {
+  @include flex-pos($fd: column);
+  min-height: inherit;
+  width: 488px;
+  margin: 0 auto;
+  padding-top: 130px;
+  padding-bottom: 80px;
+
+  .input {
+    box-shadow: 0 1px 5px -5px #000;
+
+    &:focus {
+      outline: 1px solid #000;
+    }
+  }
+
+  &__title {
+    @include preMedium();
+    margin-bottom: 10px;
+    font-size: 21px;
+    color: #222;
+    text-align: center;
+
+    span {
+      @include preExtraBold();
+      background-image: linear-gradient(60deg, #3d3393 0%, #0090f9 37%, #3fa9f5 65%, #8cf577 100%);
+      background-size: 200% 100%;
+      font-size: 24px;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradient-move 3s ease-in-out infinite alternate;
+    }
+  }
+
+  &__sub-title {
+    @include preBold();
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 30px;
+
+    &--id-login {
+      position: relative;
+      text-align: center;
+
+      &::before {
+        @include elm-create();
+        @include pos-y-center();
+        height: 1px;
+        width: 100%;
+        background-color: #bbb;
+        left: 0;
+      }
+
+      > span {
+        padding: 0 10px;
+        position: relative;
+        background: #fff;
+      }
+    }
+  }
+
+  &__sns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 40px;
+    gap: 12px;
+  }
+
+  &__form {
+    width: 100%;
+
+    input {
+      border: 1px solid #eee;
+      width: 100%;
+      padding: 0 20px;
+      height: 48px;
+      border-radius: 6px;
+    }
+  }
+
+  &__field {
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &--empty {
+      .login__label {
+        color: #ef4444;
+      }
+    }
+  }
+
+  &__forgot {
+    @include flex-pos($jc: flex-end);
+  }
+
+  &__label {
+    @include preRegular();
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    .accent {
+      color: #fb2c36;
+    }
+  }
+
+  &__desc {
+    @include preRegular();
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 50px;
+    color: #666;
+
+    &--signup {
+      @include preRegular();
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #000;
+
+      > a {
+        @include preMedium();
+        color: #0090f9;
+
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 4px;
+        }
+      }
+    }
+  }
+
+  &__failed {
+    border: 1px solid #eee;
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    color: #ef4444;
+    box-shadow: 0 1px 5px -5px #000;
+
+    .icon {
+      background-image: url(../../assets/icons/ic-failed.png);
+      width: 12px;
+      height: 12px;
+    }
+
+    .login__failed-title {
+      @include flex-pos($ai: center, $g: 12px);
+      @include preMedium();
+      font-size: 14px;
+    }
+
+    .login__failed-desc {
+      @include preRegular();
+      display: block;
+      font-size: 14px;
+      margin-top: 7px;
+      padding-left: 24px;
+    }
+  }
+
+  &__empty-message {
+    @include preRegular();
+    display: block;
+    margin-top: 10px;
+    color: #ef4444;
+    font-size: 14px;
+  }
+
+  &__btn {
+    &--sns {
+      height: 48px;
+      background-color: #fff;
+      border: 1px solid #dfdfdf;
+      transition: 0.1s;
+      border-radius: 8px;
+      box-shadow: 0 2px 7px -6px #000;
+
+      &:hover {
+        background-color: #eee;
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        background-image: url(../../assets/icons/ic-google.png);
+      }
+    }
+
+    &--submit {
+      @include preMedium();
+      width: 100%;
+      height: 48px;
+      color: #fff;
+      background-color: #0090f9;
+      border-radius: 6px;
+      margin-top: 50px;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: #0089eb;
+      }
+
+      &:disabled {
+        @include flex-pos($jc: center, $ai: center, $g: 12px);
+        background-color: #71b9ec;
+      }
+
+      .login__loading {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 1px solid #eee;
+        border-right-color: #fff;
+        border-top-color: #fff;
+        border-bottom-color: #fff;
+        border-radius: 100%;
+        animation: loading-rotate 0.8s infinite linear;
+      }
+    }
+
+    &--forgot {
+      @include preMedium();
+      font-size: 14px;
+      color: #0090f9;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Router from './router/Router';
 import { getNoticeList } from './services/noticeService';
 import { createNoticeApi, deleteNoticeApi, increaseViewApi, updateNoticeApi } from './api/noticeApi';
+import { supabase } from './services/supabase';
 
 function App() {
   const [noticeList, setNoticeList] = useState([]);
@@ -67,7 +68,7 @@ function App() {
 
   const processedNoticeList = useMemo(() => {
     let result = [...noticeList];
-    console.log(result);
+    // console.log(result);
 
     if (searchValue.trim().length !== 0) {
       result = result.filter((item) => item.title.replace(/\s/g, '').toLowerCase().includes(searchValue.trim().replace(/\s/g, '').toLowerCase()));
@@ -122,6 +123,32 @@ function App() {
     };
 
     fetchNoticeList();
+  }, []);
+
+  const [session, setSession] = useState(null);
+  useEffect(() => {
+    // 처음 앱이 실행됐을 때 현재 로그인 상태 확인
+    supabase.auth.getSession().then(({ data }) => {
+      // console.log('현재 세션:', data.session);
+      // console.log('현재 사용자:', data.session?.user);
+
+      setSession(data.session);
+    });
+
+    // 로그인 / 로그아웃 상태 변화 감지
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      // console.log('Auth 이벤트:', _event);
+      // console.log('변경된 세션:', newSession);
+      // console.log('변경된 사용자:', newSession?.user);
+
+      setSession(newSession);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   return (

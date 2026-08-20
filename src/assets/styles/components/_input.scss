@@ -1,7 +1,7 @@
 @use '../base/mixins' as *;
 
 .input {
-  @include preSemiBold();
+  @include preRegular();
   font-size: 16px;
   line-height: 19px;
   color: var(--color-input-text-100);

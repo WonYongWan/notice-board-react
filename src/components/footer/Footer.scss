@@ -1,8 +1,11 @@
 .footer {
-  display: flex;
-  justify-content: flex-end;
   background: #2e2e2e;
-  padding: 70px 50px;
+  padding: 70px 20px;
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   &__desc {
     @include preBold();
