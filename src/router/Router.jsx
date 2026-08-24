@@ -8,6 +8,8 @@ import NoticeWrite from '../pages/NoticeWrite';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
 import Forgot from '../pages/auth/Forgot';
+import GuestRoute from './GuestRoute';
+import PrivateRoute from './PrivateRoute';
 
 const Router = ({ notice }) => {
   return (
@@ -20,25 +22,29 @@ const Router = ({ notice }) => {
           </Layout>
         }
       />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot" element={<Forgot />} />
-      <Route
-        path="/write"
-        element={
-          <Layout>
-            <NoticeWrite {...notice} />
-          </Layout>
-        }
-      />
-      <Route
-        path="/notices/:id/edit"
-        element={
-          <Layout>
-            <NoticeEdit {...notice} />
-          </Layout>
-        }
-      />
+      <Route element={<GuestRoute />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot" element={<Forgot />} />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route
+          path="/write"
+          element={
+            <Layout>
+              <NoticeWrite {...notice} />
+            </Layout>
+          }
+        />
+        <Route
+          path="/notices/:id/edit"
+          element={
+            <Layout>
+              <NoticeEdit {...notice} />
+            </Layout>
+          }
+        />
+      </Route>
       <Route
         path="/notices/:id"
         element={

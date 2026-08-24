@@ -10,6 +10,7 @@ const Login = () => {
   const [passwordEmptyFlag, setPasswordEmptyFlag] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorFlag, setErrorFlag] = useState(false);
+  const [rateLimitError, setRateLimitError] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const navigate = useNavigate();
@@ -43,6 +44,11 @@ const Login = () => {
     setLoading(false);
 
     if (error) {
+      if (error.status === 429) {
+        setRateLimitError(true);
+      } else {
+        setRateLimitError(false);
+      }
       setErrorFlag(true);
       return;
     }
@@ -86,8 +92,7 @@ const Login = () => {
             <span className="login__failed-title">
               <span className="icon icon--failed" aria-hidden="true"></span>로그인 실패
             </span>
-            <span className="login__failed-desc">아이디 또는 비밀번호가 틀렸습니다.</span>
-            {/* <span className="login__failed-desc">요청이 많아 처리할 수 없습니다. 잠시 후 다시 시도해주세요.</span> */}
+            {rateLimitError ? <span className="login__failed-desc">요청이 많아 처리할 수 없습니다. 잠시 후 다시 시도해주세요.</span> : <span className="login__failed-desc">아이디 또는 비밀번호가 틀렸습니다.</span>}
           </div>
         )}
         <div className={errorFlag && emailEmptyFlag ? 'login__field login__field--empty' : `login__field`}>
