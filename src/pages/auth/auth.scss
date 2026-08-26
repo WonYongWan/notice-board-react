@@ -2,10 +2,9 @@
 .signup {
   @include flex-pos($fd: column);
   min-height: inherit;
-  width: 488px;
+  max-width: 528px;
   margin: 0 auto;
-  padding-top: 130px;
-  padding-bottom: 80px;
+  padding: 130px 20px 80px;
 
   .input {
     box-shadow: 0 1px 5px -5px #000;
@@ -88,6 +87,7 @@
     }
 
     &--empty {
+      .signup__label,
       .login__label {
         color: #ef4444;
       }
@@ -209,6 +209,7 @@
       &:disabled {
         @include flex-pos($jc: center, $ai: center, $g: 12px);
         background-color: #71b9ec;
+        cursor: auto;
       }
 
       .login__loading {
@@ -233,6 +234,57 @@
         text-decoration: underline;
         text-underline-offset: 4px;
       }
+    }
+  }
+}
+
+.signup-complete {
+  @include flex-pos($fd: column, $ai: center, $jc: center);
+  padding: 100px 20px 180px;
+  min-height: 100vh;
+  max-width: 528px;
+  margin: 0 auto;
+
+  &__visual {
+    @include image-set();
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    background-image: url(../../assets/images/check-congratulations.png);
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include preBold();
+    font-size: 24px;
+    margin-bottom: 18px;
+    color: #222;
+    letter-spacing: -0.28px;
+
+    .signup-complete__name {
+      color: #0090f9;
+    }
+  }
+
+  &__message {
+    font-size: 16px;
+    color: #666;
+  }
+
+  &__btn {
+    @include preMedium();
+    text-align: center;
+    line-height: 48px;
+    width: 100%;
+    height: 48px;
+    color: #fff;
+    background-color: #0090f9;
+    border-radius: 6px;
+    margin-top: 50px;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: #0089eb;
     }
   }
 }

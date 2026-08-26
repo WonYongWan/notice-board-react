@@ -1,15 +1,17 @@
 import { Routes, Route } from 'react-router';
 
-import NoticeList from '../pages/NoticeList';
-import NoticeDetail from '../pages/NoticeDetail';
 import Layout from '../components/layout/Layout';
-import NoticeEdit from '../pages/NoticeEdit';
-import NoticeWrite from '../pages/NoticeWrite';
+import NoticeList from '../pages/notice/NoticeList';
+import NoticeDetail from '../pages/notice/NoticeDetail';
+import NoticeEdit from '../pages/notice/NoticeEdit';
+import NoticeWrite from '../pages/notice/NoticeWrite';
 import Login from '../pages/auth/Login';
 import Signup from '../pages/auth/Signup';
-import Forgot from '../pages/auth/Forgot';
+import AccountFind from '../pages/auth/AccountFind';
 import GuestRoute from './GuestRoute';
 import PrivateRoute from './PrivateRoute';
+import SignupComplete from '../pages/auth/SignupComplete';
+import MySetting from '../pages/my/MySetting';
 
 const Router = ({ notice }) => {
   return (
@@ -25,9 +27,18 @@ const Router = ({ notice }) => {
       <Route element={<GuestRoute />}>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/account-find" element={<AccountFind />} />
       </Route>
+      <Route path="/signup-complete" element={<SignupComplete />}></Route>
       <Route element={<PrivateRoute />}>
+        <Route
+          path="/my-setting"
+          element={
+            <Layout>
+              <MySetting />
+            </Layout>
+          }
+        />
         <Route
           path="/write"
           element={

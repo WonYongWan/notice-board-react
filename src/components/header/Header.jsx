@@ -1,21 +1,14 @@
 import { Link, useNavigate } from 'react-router';
 import './Header.scss';
 import Container from '../layout/Container';
-import { useAuth } from '../../context/useAuth';
-import { supabase } from '../../services/supabase';
+import { useAuth } from '../../context/auth/useAuth';
 
 const Header = () => {
-  const { user, loading } = useAuth();
+  const { user, profile, loading, signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      console.error('로그아웃 실패', error);
-      return;
-    }
-
+    await signOut();
     navigate('/');
   };
 
@@ -39,10 +32,12 @@ const Header = () => {
             </Link>
           </div>
         )}
-        {user && (
+        {user && profile && (
           <div className="header__actions">
             <div className="header__user">
-              <button className="header__btn"></button>
+              <Link className="header__btn header__btn--profile" to={'/my-setting'}>
+                <img src={profile.profile_image} alt="프로필 이미지" />
+              </Link>
             </div>
             <button className="header__btn header__btn--variant-1" onClick={handleLogout}>
               로그아웃
