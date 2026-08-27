@@ -13,9 +13,9 @@ const Home = ({ notice }) => {
   return (
     <div className="home">
       <div className="home__container">
-        <div className="home__banner">
+        {/* <div className="home__banner">
           <iframe src="" frameborder="0"></iframe>
-        </div>
+        </div> */}
         <div className="home__main">
           <div className="home__header">
             <NoticeSearch searchInput={searchInput} setSearchInput={setSearchInput} setSearchValue={setSearchValue} setCurrentPage={setCurrentPage} />
@@ -28,9 +28,9 @@ const Home = ({ notice }) => {
           </div>
           <NoticeList {...notice} />
         </div>
-        <div className="home__banner">
+        {/* <div className="home__banner">
           <iframe src="" frameborder="0"></iframe>
-        </div>
+        </div> */}
       </div>
 
       {itemLength !== 0 && (
