@@ -12,6 +12,7 @@ import GuestRoute from './GuestRoute';
 import PrivateRoute from './PrivateRoute';
 import SignupComplete from '../pages/auth/SignupComplete';
 import MySetting from '../pages/my/MySetting';
+import Home from '../pages/Home';
 
 const Router = ({ notice }) => {
   return (
@@ -20,7 +21,8 @@ const Router = ({ notice }) => {
         path="/"
         element={
           <Layout>
-            <NoticeList {...notice} />
+            {/* <NoticeList {...notice} /> */}
+            <Home {...notice} />
           </Layout>
         }
       />
