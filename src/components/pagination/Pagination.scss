@@ -1,5 +1,4 @@
 .pagination {
-  padding: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,25 +9,38 @@
     display: inline-block;
     width: 40px;
     height: 40px;
-    border-radius: 100%;
+    border-radius: 4px;
     color: #333;
     font-size: 12px;
-    transition: 0.3s;
+    transition: 0.1s;
 
     &:hover {
-      box-shadow: #333 0px 1px 3px 0px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px;
     }
 
     &--prev,
     &--next {
+      background: #f3f3f3;
+
       &:disabled {
         color: #aaa;
         cursor: not-allowed;
-        opacity: 0.6;
+        opacity: 0.3;
 
         &:hover {
           box-shadow: none;
         }
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &--next {
+      .icon {
+        transform: rotate(180deg);
       }
     }
   }
@@ -43,16 +55,16 @@
     font-size: 14px;
     width: 40px;
     height: 40px;
-    border-radius: 100%;
+    border-radius: 4px;
     color: #333;
-    transition: 0.3s box-shadow;
+    transition: 0.1s box-shadow;
 
     &:hover {
-      box-shadow: #333 0px 1px 3px 0px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px 0px;
     }
 
     &--active {
-      background: #2cacd1;
+      background: #0090f9;
       color: #fff;
 
       &:hover {

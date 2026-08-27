@@ -34,7 +34,7 @@ const Pagination = ({ currentPage, setCurrentPage, pageLength }) => {
   return (
     <div className="pagination">
       <button className="pagination__btn pagination__btn--prev" onClick={prevClickEvent} disabled={currentPage === 0 || pageLength < 2}>
-        Prev
+        <span className="icon icon--arrow-back" aria-hidden="true"></span>
       </button>
       <ul className="pagination__nums">
         {numArray.map((item) => (
@@ -46,7 +46,7 @@ const Pagination = ({ currentPage, setCurrentPage, pageLength }) => {
         ))}
       </ul>
       <button className="pagination__btn pagination__btn--next" onClick={nextClickEvent} disabled={currentPage === pageLength - 1 || pageLength < 2}>
-        Next
+        <span className="icon icon--arrow-back" aria-hidden="true"></span>
       </button>
     </div>
   );

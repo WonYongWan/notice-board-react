@@ -2,16 +2,13 @@ import { Link, useNavigate } from 'react-router';
 import './NoticeWrite.scss';
 import Modal from '../../components/modal/Modal';
 import { useState } from 'react';
-import NoticeFilter from '../../components/notice/NoticeFilter';
 
-const NoticeWrite = ({ createNotice, categoryList }) => {
+const NoticeWrite = ({ createNotice }) => {
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
   const [noticeTitle, setNoticeTitle] = useState('');
   const [noticeContent, setNoticeContent] = useState('');
   const navigate = useNavigate();
-  const filteredCategoryList = categoryList.filter((item) => item !== '전체');
-  const [category, setCategory] = useState(filteredCategoryList[0]);
 
   const handleWrite = async () => {
     if (noticeTitle.trim().length === 0 || noticeContent.trim().length === 0) {
@@ -21,7 +18,6 @@ const NoticeWrite = ({ createNotice, categoryList }) => {
     }
 
     const newNotice = {
-      category,
       title: noticeTitle,
       writer: '유저',
       views: 0,
@@ -49,9 +45,6 @@ const NoticeWrite = ({ createNotice, categoryList }) => {
       <div className="notice-write">
         <div className="notice-write__header">
           <input className="notice-write__title" type="text" placeholder="제목을 적어주세요" value={noticeTitle} onChange={inputTitle} />
-          <div className="notice-write__info">
-            <NoticeFilter categoryList={filteredCategoryList} category={category} setCategory={setCategory} />
-          </div>
         </div>
         <div className="notice-write__content">
           <textarea className="notice-write__desc" placeholder="내용을 적어주세요" value={noticeContent} onChange={inputContent}></textarea>

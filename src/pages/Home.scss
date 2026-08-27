@@ -1,33 +1,53 @@
 .home {
-  padding: 100px 0;
-
-  &__notice {
-    margin-bottom: 40px;
+  &__container {
+    @include flex-pos($g: 20px);
   }
 
-  &__notice-header {
-    @include flex-pos($jc: space-between, $ai: center);
-    margin-bottom: 40px;
+  &__banner {
+    position: sticky;
+    top: 60px;
+    padding-top: 20px;
+    height: 600px;
+
+    iframe {
+      width: 160px;
+      height: 600px;
+      border: 1px solid #000;
+    }
   }
 
-  &__title {
-    @include preBold();
-    font-size: 14px;
-    color: #fff;
-    background: #222;
-    padding: 10px 30px;
-    border-radius: 6px;
+  &__main {
+    width: 100%;
+  }
+
+  &__header {
+    @include flex-pos($jc: space-between);
+    padding: 20px 0;
+  }
+
+  &__actions {
+    @include flex-pos($g: 12px);
+  }
+
+  &__pagination {
+    padding: 50px 0;
   }
 
   &__btn {
-    &--more {
-      @include preMedium();
-      font-size: 14px;
-      color: #0090f9;
+    &--write {
+      @include preLight();
+      width: 38px;
+      text-align: center;
+      font-size: 24px;
+      border-radius: 4px;
+      height: 38px;
+      line-height: 38px;
+      background-color: #f3f3f3;
+      transition: 0.1s;
+      color: #222;
 
       &:hover {
-        text-decoration: underline;
-        text-underline-offset: 4px;
+        background-color: #eee;
       }
     }
   }

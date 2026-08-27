@@ -1,13 +1,12 @@
 .notice-search {
   @include flex-pos($jc: space-between);
   width: 100%;
-  max-width: 800px;
   height: 40px;
   border: 1px solid #ddd;
-  border-radius: 20px;
+  border-radius: 4px;
   overflow: hidden;
   background-color: #fff;
-  margin: 0 auto;
+  max-width: 500px;
 
   &__input-wrap {
     @include flex-pos($ai: center);
@@ -37,7 +36,7 @@
 
     &--search {
       @include flex-pos($jc: center, $ai: center);
-      background-color: #2cacd1;
+      background-color: #0090f9;
       min-width: 58px;
       min-height: inherit;
 

@@ -2,6 +2,7 @@
 
 :root {
   --ic-arrow-bottom: url(../../icons/ic-arrow-bottom.png);
+  --ic-arrow-back: url(../../icons/ic-arrow-back.png);
   --ic-delete-search: url(../../icons/ic-delete-search.png);
   --ic-search: url(../../icons/ic-search.png);
 }
@@ -14,6 +15,10 @@
 
   &--arrow-bottom {
     background-image: var(--ic-arrow-bottom);
+  }
+
+  &--arrow-back {
+    background-image: var(--ic-arrow-back);
   }
 
   &--delete-search {

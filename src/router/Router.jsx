@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router';
-
 import Layout from '../components/layout/Layout';
-// import NoticeList from '../pages/notice/NoticeList';
+import Home from '../pages/Home';
 import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeEdit from '../pages/notice/NoticeEdit';
 import NoticeWrite from '../pages/notice/NoticeWrite';
@@ -12,7 +11,6 @@ import GuestRoute from './GuestRoute';
 import PrivateRoute from './PrivateRoute';
 import SignupComplete from '../pages/auth/SignupComplete';
 import MySetting from '../pages/my/MySetting';
-import Home from '../pages/Home';
 
 const Router = ({ notice }) => {
   return (
@@ -21,7 +19,6 @@ const Router = ({ notice }) => {
         path="/"
         element={
           <Layout>
-            {/* <NoticeList {...notice} /> */}
             <Home notice={notice} />
           </Layout>
         }

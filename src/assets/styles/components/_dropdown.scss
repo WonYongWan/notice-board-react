@@ -8,13 +8,14 @@
   &__btn {
     @include flex-pos($ai: center, $jc: space-between);
     width: 100%;
-    border-radius: 20px;
-    background-color: #f8f8f8;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    height: 38px;
     padding: 10px 12px 10px 20px;
 
     .icon {
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
 
       &--arrow-bottom {
         transition: 0.3s;
@@ -25,8 +26,7 @@
   &__label {
     @include flex-pos();
     @include preMedium();
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
     color: #686868;
 
     .icon {
@@ -53,7 +53,7 @@
 
   .select-box {
     display: none;
-    top: calc(100% + 10px);
+    top: calc(100% + 5px);
     left: 0;
   }
 
@@ -77,10 +77,9 @@
   display: none;
   position: absolute;
   width: 100%;
-  max-width: 205px;
-  border-radius: 12px;
+  border-radius: 4px;
   background-color: #fff;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   overflow: hidden;
   padding: 10px 0;
   box-shadow: 0 2px 12px 0 #0000001f;
@@ -93,32 +92,12 @@
   &__btn {
     @include flex-pos($ai: center, $g: 16px);
     @include preMedium();
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
     color: #222;
     width: 100%;
-    padding: 15px 18px 14px;
+    height: 40px;
+    padding: 0 18px 0;
     text-align: left;
-
-    .icon {
-      width: 20px;
-      height: 20px;
-
-      &--check {
-        margin-left: auto;
-        display: none;
-      }
-    }
-
-    &.is-active {
-      background-color: #f8f8f8;
-
-      .icon {
-        &--check {
-          display: inline-block;
-        }
-      }
-    }
 
     &:hover {
       background-color: #f8f8f8;
