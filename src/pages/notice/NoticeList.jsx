@@ -20,13 +20,13 @@ const NoticeList = ({ data, isLoading, categoryList, category, setCategory, sort
 
   return (
     <>
-      <div className="notice-list__header">
+      {/* <div className="notice-list__header">
         <NoticeSearch searchInput={searchInput} setSearchInput={setSearchInput} setSearchValue={setSearchValue} setCurrentPage={setCurrentPage} />
         <div className="notice-list__actions">
           <NoticeFilter categoryList={categoryList} category={category} setCategory={setCategory} setCurrentPage={setCurrentPage} />
           <NoticeSort sortType={sortType} setSortType={setSortType} setCurrentPage={setCurrentPage} />
         </div>
-      </div>
+      </div> */}
       <ul className="notice-list">
         {isLoading ? (
           <li className="notice-list__item notice-list__item--loading">
@@ -54,12 +54,12 @@ const NoticeList = ({ data, isLoading, categoryList, category, setCategory, sort
           ))
         )}
       </ul>
-      <div className="notice-list__footer">
+      {/* <div className="notice-list__footer">
         <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pageLength={pageLength} />
         <Link className="notice-list__btn notice-list__btn--write" to={'/write'} onClick={handleWriteClick}>
           Write
         </Link>
-      </div>
+      </div> */}
     </>
   );
 };

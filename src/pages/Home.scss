@@ -1,0 +1,34 @@
+.home {
+  padding: 100px 0;
+
+  &__notice {
+    margin-bottom: 40px;
+  }
+
+  &__notice-header {
+    @include flex-pos($jc: space-between, $ai: center);
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include preBold();
+    font-size: 14px;
+    color: #fff;
+    background: #222;
+    padding: 10px 30px;
+    border-radius: 6px;
+  }
+
+  &__btn {
+    &--more {
+      @include preMedium();
+      font-size: 14px;
+      color: #0090f9;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+}

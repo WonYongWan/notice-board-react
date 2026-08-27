@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router';
 
 import Layout from '../components/layout/Layout';
-import NoticeList from '../pages/notice/NoticeList';
+// import NoticeList from '../pages/notice/NoticeList';
 import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeEdit from '../pages/notice/NoticeEdit';
 import NoticeWrite from '../pages/notice/NoticeWrite';
@@ -22,7 +22,7 @@ const Router = ({ notice }) => {
         element={
           <Layout>
             {/* <NoticeList {...notice} /> */}
-            <Home {...notice} />
+            <Home notice={notice} />
           </Layout>
         }
       />
