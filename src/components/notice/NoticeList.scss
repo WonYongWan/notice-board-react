@@ -11,24 +11,68 @@
   }
 
   &__item-box {
-    padding: 50px 20px;
-    display: flex;
-    justify-content: space-between;
+    @include flex-pos($jc: space-between, $g: 100px);
+    padding: 20px 25px;
     box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.1215686275);
     border: 1px solid #ddd;
     border-radius: 4px;
   }
 
   &__info {
-    @include preMedium();
-    display: flex;
-    gap: 20px;
+  }
+
+  &__user {
+    @include flex-pos($ai: center);
+    @include preRegular();
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    @include text-cut-multiline();
+    @include preSemiBold();
     font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 50px;
+    margin-left: 10px;
+  }
+
+  &__nickname {
+    @include preMedium();
+    position: relative;
+    font-size: 14px;
+    padding-right: 12px;
+    margin-right: 10px;
+
+    &::before {
+      @include elm-create();
+      @include pos-y-center();
+      right: 0;
+      width: 1px;
+      height: 10px;
+      background-color: #bbb;
+      border-radius: 100%;
+    }
+  }
+
+  &__time {
+    font-size: 12px;
+    color: #666;
   }
 
   &__sub-info {
+    @include flex-pos($ai: center, $g: 10px);
     @include preMedium();
+    margin-top: auto;
     font-size: 14px;
     color: #807c7c;
+  }
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+    margin-right: 6px;
   }
 }
