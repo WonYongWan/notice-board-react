@@ -1,13 +1,18 @@
 import { supabase } from '../services/supabase';
 
 export const getNoticeList = async () => {
-  const { data, error } = await supabase.from('posts').select(`
+  const { data, error } = await supabase
+    .from('posts')
+    .select(
+      `
     *,
     profile:profiles (
       nickname,
       profile_image
     )
-  `);
+  `,
+    )
+    .order('created_at', { ascending: true });
 
   if (error) {
     console.error('게시글 조회 실패', error);
