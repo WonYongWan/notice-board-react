@@ -2,12 +2,25 @@ import './NoticeList.scss';
 import { Link } from 'react-router';
 import NoticeEmpty from './NoticeEmpty';
 import Loading from '../loading/Loading';
+import { formatRelativeTime } from '../../utils/formatRelativeTime';
+import { useEffect, useState } from 'react';
 
 const NoticeList = ({ data, isLoading, currentPage, increaseViews }) => {
   const start = currentPage * 10;
   const end = start + 10;
   const currentNoticeList = data.slice(start, end);
-  // const currentNoticeList = [];
+
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(Date.now());
+    }, 60 * 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <ul className="notice-list">
@@ -26,9 +39,9 @@ const NoticeList = ({ data, isLoading, currentPage, increaseViews }) => {
               <div className="notice-list__item-box">
                 <div className="notice-list__info">
                   <div className="notice-list__user">
-                    <img className="notice-list__avatar" src="https://img.magnific.com/free-vector/elegant-man-profile-avatar-character_24877-83238.jpg?semt=ais_hybrid&w=740&q=80" alt="" />
-                    <span className="notice-list__nickname">ㅇㅇㅇ</span>
-                    <span className="notice-list__time">date : {noticeItem.updated_at.split('T')[0]}</span>
+                    <img className="notice-list__avatar" src={noticeItem.profile?.profile_image} alt="프로필 이미지" />
+                    <span className="notice-list__nickname">{noticeItem.profile?.nickname}</span>
+                    <span className="notice-list__time">{formatRelativeTime(noticeItem.updated_at, now)}</span>
                   </div>
                   <p className="notice-list__title">{noticeItem.title}</p>
                 </div>

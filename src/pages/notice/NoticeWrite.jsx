@@ -2,8 +2,10 @@ import { Link, useNavigate } from 'react-router';
 import './NoticeWrite.scss';
 import Modal from '../../components/modal/Modal';
 import { useState } from 'react';
+import { useAuth } from '../../context/auth/useAuth';
 
 const NoticeWrite = ({ createNotice }) => {
+  const { user } = useAuth();
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
   const [noticeTitle, setNoticeTitle] = useState('');
@@ -25,7 +27,7 @@ const NoticeWrite = ({ createNotice }) => {
     };
 
     try {
-      const creactNotice = await createNotice(newNotice);
+      const creactNotice = await createNotice(newNotice, user.id);
       navigate(`/notices/${creactNotice.id}`);
     } catch (error) {
       console.error(error);

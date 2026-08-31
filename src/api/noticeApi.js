@@ -1,7 +1,13 @@
 import { supabase } from '../services/supabase';
 
 export const getNoticeList = async () => {
-  const { data, error } = await supabase.from('posts').select('*');
+  const { data, error } = await supabase.from('posts').select(`
+    *,
+    profile:profiles (
+      nickname,
+      profile_image
+    )
+  `);
 
   if (error) {
     console.error('게시글 조회 실패', error);
@@ -11,14 +17,14 @@ export const getNoticeList = async () => {
   return data;
 };
 
-export const createNoticeApi = async (notice) => {
+export const createNoticeApi = async (notice, userId) => {
   const { data, error } = await supabase
     .from('posts')
     .insert({
-      category: notice.category,
       title: notice.title,
       content: notice.content,
       views: 0,
+      user_id: userId,
     })
     .select()
     .single();
