@@ -12,7 +12,7 @@ export const getNoticeList = async () => {
     )
   `,
     )
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: false });
 
   if (error) {
     console.error('게시글 조회 실패', error);

@@ -5,3 +5,13 @@
 @use './components/icons';
 @use './components/dropdown';
 @use './components/input';
+
+html,
+body {
+  font-family:
+    'Pretendard',
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    sans-serif;
+}

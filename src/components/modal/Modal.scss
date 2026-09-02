@@ -23,8 +23,8 @@
   opacity: 1;
   background-color: #fff;
   width: 100%;
-  max-width: 360px;
-  border-radius: 16px;
+  max-width: 340px;
+  border-radius: 4px;
   padding: 40px 24px 24px;
 
   &--center {
@@ -37,24 +37,25 @@
 
   &__message {
     @include preMedium();
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 19px;
     color: #222;
     text-align: center;
   }
 
   &__footer {
-    @include flex-pos($ai: center, $g: 12px);
+    @include flex-pos($ai: center, $g: 10px);
   }
 
   &__btn {
     @include preMedium();
     @include flex-pos($jc: center, $ai: center);
-    font-size: 16px;
-    line-height: 19px;
-    border-radius: 10px;
-    padding: 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 0 15px;
     width: 100%;
+    height: 45px;
+    line-height: 45px;
     color: #222;
     background-color: #eee;
     transition: 0.3s;
@@ -71,10 +72,10 @@
 
     &--accent {
       color: #fff;
-      background-color: #2cacd1;
+      background-color: #0090f9;
 
       &:hover {
-        background-color: #289cbd;
+        background-color: #0089eb;
       }
     }
   }

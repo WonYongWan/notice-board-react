@@ -38,22 +38,8 @@ const Router = ({ notice }) => {
             </Layout>
           }
         />
-        <Route
-          path="/write"
-          element={
-            <Layout>
-              <NoticeWrite {...notice} />
-            </Layout>
-          }
-        />
-        <Route
-          path="/notices/:id/edit"
-          element={
-            <Layout>
-              <NoticeEdit {...notice} />
-            </Layout>
-          }
-        />
+        <Route path="/write" element={<NoticeWrite {...notice} />} />
+        <Route path="/notices/:id/edit" element={<NoticeEdit {...notice} />} />
       </Route>
       <Route
         path="/notices/:id"
