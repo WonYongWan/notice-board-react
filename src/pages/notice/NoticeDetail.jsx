@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router';
 import './NoticeDetail.scss';
 import Modal from '../../components/modal/Modal';
 import { useState } from 'react';
+import NoticeContent from '@/components/notice/NoticeContent';
 
 const NoticeDetail = ({ deleteNotice, data, setCurrentPage }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -34,7 +35,7 @@ const NoticeDetail = ({ deleteNotice, data, setCurrentPage }) => {
           </div>
         </div>
         <div className="notice-detail__content">
-          <p className="notice-detail__desc">{notice.content}</p>
+          <NoticeContent content={notice.content} />
         </div>
         <div className="notice-detail__footer">
           <Link className="notice-detail__btn notice-detail__btn--edit" to={`/notices/${id}/edit`}>

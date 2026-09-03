@@ -9,12 +9,26 @@ const NoticeEditor = ({ title, content, onTitleChange, onContentChange, onSave, 
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
 
+  const isEmptyContent = (content) => {
+    if (!content?.content) return true;
+
+    return content.content.every((node) => {
+      if (!node.content) return true;
+
+      return node.content.every((child) => {
+        return !child.text?.trim();
+      });
+    });
+  };
+
   const handleSaveClick = () => {
-    if (title.trim().length === 0 || content.trim().length === 0) {
+    if (title.trim().length === 0 || isEmptyContent(content)) {
       setIsWriteModalOpen(false);
       setIsReturnModalOpen(true);
       return;
     }
+
+    onSave();
   };
 
   return (

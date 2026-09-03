@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { EditorContent, EditorContext, useEditor } from '@tiptap/react';
+import { EditorContent, EditorContext, JSONContent, useEditor } from '@tiptap/react';
 
 // --- Tiptap Core Extensions ---
 import { StarterKit } from '@tiptap/starter-kit';
@@ -54,7 +54,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from '@/lib/tiptap-utils';
 // --- Styles ---
 import '@/components/tiptap-templates/simple/simple-editor.scss';
 
-import content from '@/components/tiptap-templates/simple/data/content.json';
+// import content from '@/components/tiptap-templates/simple/data/content.json';
 
 const MainToolbarContent = ({ onHighlighterClick, onLinkClick, isMobile }: { onHighlighterClick: () => void; onLinkClick: () => void; isMobile: boolean }) => {
   return (
@@ -122,10 +122,17 @@ const MobileToolbarContent = ({ type, onBack }: { type: 'highlighter' | 'link'; 
   </>
 );
 
-export function SimpleEditor() {
+interface SimpleEditorProps {
+  content: JSONContent;
+  onChange: (content: JSONContent) => void;
+}
+
+export function SimpleEditor({ content, onChange }: SimpleEditorProps) {
   const isMobile = useIsBreakpoint();
   const [mobileView, setMobileView] = useState<'main' | 'highlighter' | 'link'>('main');
   const toolbarRef = useRef<HTMLDivElement>(null);
+  console.log(content);
+  console.log(onChange);
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -163,6 +170,9 @@ export function SimpleEditor() {
       }),
     ],
     content,
+    onUpdate: ({ editor }) => {
+      onChange(editor.getJSON());
+    },
   });
 
   useEffect(() => {
