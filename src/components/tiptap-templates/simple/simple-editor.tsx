@@ -131,8 +131,6 @@ export function SimpleEditor({ content, onChange }: SimpleEditorProps) {
   const isMobile = useIsBreakpoint();
   const [mobileView, setMobileView] = useState<'main' | 'highlighter' | 'link'>('main');
   const toolbarRef = useRef<HTMLDivElement>(null);
-  console.log(content);
-  console.log(onChange);
 
   const editor = useEditor({
     immediatelyRender: false,
