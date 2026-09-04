@@ -11,6 +11,7 @@ import { TextAlign } from '@tiptap/extension-text-align';
 import { Typography } from '@tiptap/extension-typography';
 import { Highlight } from '@tiptap/extension-highlight';
 import { Selection } from '@tiptap/extensions';
+import { Placeholder } from '@tiptap/extensions';
 
 // --- UI Primitives ---
 import { Button } from '@/components/tiptap-ui-primitive/button';
@@ -53,8 +54,6 @@ import { handleImageUpload, MAX_FILE_SIZE } from '@/lib/tiptap-utils';
 
 // --- Styles ---
 import '@/components/tiptap-templates/simple/simple-editor.scss';
-
-// import content from '@/components/tiptap-templates/simple/data/content.json';
 
 const MainToolbarContent = ({ onHighlighterClick, onLinkClick, isMobile }: { onHighlighterClick: () => void; onLinkClick: () => void; isMobile: boolean }) => {
   return (
@@ -156,6 +155,9 @@ export function SimpleEditor({ content, onChange }: SimpleEditorProps) {
       TaskList,
       TaskItem.configure({ nested: true }),
       Highlight.configure({ multicolor: true }),
+      Placeholder.configure({
+        placeholder: '내용을 입력해주세요',
+      }),
       Image,
       Typography,
       Selection,

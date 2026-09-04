@@ -1,4 +1,5 @@
 import Highlight from '@tiptap/extension-highlight';
+import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -17,6 +18,7 @@ const NoticeContent = ({ content }) => {
       Highlight.configure({
         multicolor: true,
       }),
+      Image,
     ],
     content,
     editable: false,

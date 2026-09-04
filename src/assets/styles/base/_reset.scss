@@ -165,6 +165,6 @@ input {
 a {
   color: unset;
 }
-* {
-  user-select: none;
+*::selection {
+  background: rgba(230, 245, 255, 1);
 }
